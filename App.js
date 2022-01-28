@@ -1,15 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
+import Home from "./screens/Home";
 
 export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
-  );
+    <SafeAreaView style= {{backgroundColor: "#eee", flex:1}}>
+      <View style= {{backgroundColor: "white", padding: 15}}>
+        <Home/>
+      </View>
+    </SafeAreaView>
+  ); 
 }
