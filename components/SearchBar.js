@@ -10,12 +10,18 @@ function SearchBar(props) {
             flexDirection: "row",
 
         }}>
-            <GooglePlacesAutocomplete 
+            <GooglePlacesAutocomplete
+                query={{key: 'AIzaSyA2DIEbikfkikUUs12siDmbainLmqQ9K_s'}}
+                onPress={ (data, details = null) => {
+                    console.log(data.description)
+                    const area = data.description.split(",")[0];
+                    props.cityHandler(area);
+                }}
                 placeholder='Search'
                 styles={{
                     textInput: {
                         backgroundColor: "#eee",
-                        borderRadius: "20",
+                        borderRadius: 20,
                         fontWeight: "700",
                         marginTop: 7,
                     },
@@ -24,7 +30,7 @@ function SearchBar(props) {
                         borderRadius:50,
                         flexDirection: "row",
                         alignItems:"center",
-                        marginRight: "10",
+                        marginRight: 10,
                     }
                 }}
                 renderLeftButton={()=>
