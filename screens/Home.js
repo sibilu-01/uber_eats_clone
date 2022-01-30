@@ -6,9 +6,8 @@ import Categories from '../components/Categories';
 import RestaurantItem, { localRests } from '../components/RestaurantItem';
 import { Divider } from 'react-native-elements';
 import BottomTabs from '../components/BottomTabs';
-
-const YELP_API_KEY="hVYsH5HEqDli8TkHLcp-peWvC9ZJSdMF2Sx9zDKvLlV14Na7xidhkZ5-RSsAAVrMdl6S9ZJIkfQs6w3qhu0jZtoD11PZpeSsZZcAI3BHieaSyxcMWElEvjli1pLzYXYx"
-
+import { YELP_KEY } from "@env";
+console.log(YELP_KEY);
 
 export default function Home() {
     const [restaurantData, setRestaurantData] = useState(localRests);
@@ -23,7 +22,7 @@ export default function Home() {
 
     const apiOptions = {
         headers: {
-            Authorization: `Bearer ${YELP_API_KEY}`
+            Authorization: `Bearer ${YELP_KEY}`
         },
     }
     return fetch(yelp, apiOptions).
@@ -32,7 +31,9 @@ export default function Home() {
         ).
         then(
             (json)=>{
-                setRestaurantData(json.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase().replace(" ",""))))
+                if (json.businesses != null) {
+                    setRestaurantData(json.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase().replace(" ",""))))
+                }
             }
         ).catch(err =>
             console.error(err)

@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import {GOOGLE_PLACES_API_KEY} from '@env'
 function SearchBar(props) {
     return (
         <View style= {{
@@ -11,7 +12,7 @@ function SearchBar(props) {
 
         }}>
             <GooglePlacesAutocomplete
-                query={{key: 'AIzaSyA2DIEbikfkikUUs12siDmbainLmqQ9K_s'}}
+                query={{key: GOOGLE_PLACES_API_KEY}}
                 onPress={ (data, details = null) => {
                     console.log(data.description)
                     const area = data.description.split(",")[0];

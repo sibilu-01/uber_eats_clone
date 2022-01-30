@@ -12,22 +12,44 @@ export const localRests = [
 ];
 
 function RestaurantItem(props) {
-    return (
-        <TouchableOpacity activeOpacity={1} style={{
-            marginBottom: 30
-        }}>
-            {props.restaurantData.map((restaurant, index)=> (
-                <View key={index} style={{
-                    marginTop: 15,
-                    padding: 15,
-                    backgroundColor: "white"
-                }}>
-                    <RestaurantImage image={restaurant.image_url}/>
-                    <RestaurantInfo name={restaurant.name} rating={restaurant.rating} timer={restaurant.timer} />
-                </View>
-            ))}
-        </TouchableOpacity>
-    );
+    console.log(props.restaurantData.length)
+    if (props.restaurantData.length == 0) {
+        console.log(props.restaurantData)
+        return (
+            <View style = {{
+                marginVertical: "45%",
+                marginHorizontal: 20,
+                backgroundColor:"white",
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent:'center',
+                paddingHorizontal: 40,
+                paddingVertical: 20
+            }}>
+                <Text style={{
+                    color: 'red',
+                    fontSize: 20,
+                }}>No restaurants in this city. Try USA Cities to get results</Text>
+            </View>
+        )
+    } else {
+        return (
+            <TouchableOpacity activeOpacity={1} style={{
+                marginBottom: 30
+            }}>
+                {props.restaurantData.map((restaurant, index)=> (
+                    <View key={index} style={{
+                        marginTop: 15,
+                        padding: 15,
+                        backgroundColor: "white"
+                    }}>
+                        <RestaurantImage image={restaurant.image_url}/>
+                        <RestaurantInfo name={restaurant.name} rating={restaurant.rating} timer={restaurant.timer} />
+                    </View>
+                ))}
+            </TouchableOpacity>
+        );
+    }
 }
 
 
