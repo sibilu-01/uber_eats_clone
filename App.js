@@ -1,12 +1,6 @@
-import { View, Text, SafeAreaView } from "react-native";
-import Home from "./screens/Home";
-
+import Navigation from "./navigation";
 export default function App() {
   return (
-    <SafeAreaView style= {{backgroundColor: "#eee", flex:1}}>
-      <View style= {{backgroundColor: "white", flex: 1}}>
-        <Home/>
-      </View>
-    </SafeAreaView>
+      <Navigation/>
   ); 
 }

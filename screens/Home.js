@@ -1,15 +1,15 @@
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
-import Categories from '../components/Categories';
-import RestaurantItem, { localRests } from '../components/RestaurantItem';
+import Header from '../components/home/Header';
+import SearchBar from '../components/home/SearchBar';
+import Categories from '../components/home/Categories';
+import RestaurantItem, { localRests } from '../components/home/RestaurantItem';
 import { Divider } from 'react-native-elements';
-import BottomTabs from '../components/BottomTabs';
+import BottomTabs from '../components/home/BottomTabs';
 import { YELP_KEY } from "@env";
 console.log(YELP_KEY);
 
-export default function Home() {
+export default function Home({navigation}) {
     const [restaurantData, setRestaurantData] = useState(localRests);
     const [city, setCity] = useState("Newyork");
     const [activeTab, setActiveTab] = useState("Delivery");
@@ -47,7 +47,7 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories/>
-        <RestaurantItem restaurantData={restaurantData}/>
+        <RestaurantItem restaurantData={restaurantData} navigation={navigation}/>
       </ScrollView>
       <Divider width={1}/>
       <BottomTabs></BottomTabs>
